@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>React – useEffect & useState</title>
+
+  <!-- React, ReactDOM et Babel -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900 text-white min-h-screen flex flex-col items-center justify-center p-4">
+  <h1 class="text-3xl font-bold mb-6">Compteur useReducer</h1>
+  <div id="root" class="w-full max-w-xl"></div>
+
+  <script type="text/babel">
+
+    function reducer(state, action) {
+        switch (action.type) {
+            case "increment":
+                return { count: state.count + 1 };
+            case "decrement":
+                if (state.count > 0)
+                return { count: state.count - 1 }; console.log("Ce compteur ne peut pas être négatif");
+            case "reset":
+                return { count: 0 };
+            default:
+                return state;
+}
+}
+
+function Counter() {
+  const [state, dispatch] = React.useReducer(reducer, { count: 0 });
+
+  return (
+    <div>
+      <h2>Compteur : {state.count}</h2>
+      <div className="flex gap-4">
+        <button onClick={() => dispatch({ type: "increment" })}>+</button>
+        <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+        <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
+      </div>
+    </div>
+  );
+}
+
+    function App() {
+      return (
+        <div className="bg-slate-800 p-4 rounded-xl shadow-lg">
+          <Counter />
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
