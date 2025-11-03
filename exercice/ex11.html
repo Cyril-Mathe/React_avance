@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercice 11</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- React et ReactDOM via CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+ function Timer() {
+  const [seconds, setSeconds] = React.useState(0);
+  const [minutes, setMinutes] = React.useState(0);
+
+  if(seconds == 10)
+    setSeconds(0),
+    setMinutes(minutes => minutes + 1)
+
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setSeconds(seconds => seconds + 1)
+        }, 1000);
+        return () => {
+            clearInterval(interval)
+            console.log("L'horloge a été stopper")
+        }
+  }, []);
+
+  return (
+    <div>
+      <p>Timer : {minutes}:{seconds}</p>
+      <button onClick={interval}>Stop</button>
+    </div>
+  );
+}
+
+  function App() {
+    return (
+      <div>
+        <Timer />
+      </div>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<App />);
+</script>
+  </body>
+</html> 

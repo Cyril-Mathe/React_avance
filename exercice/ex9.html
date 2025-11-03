@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercice 9</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- React et ReactDOM via CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+ function TodoList() {
+  const [todos, setTodos] = React.useState([]);
+  const [newTodo, setNewTodo] = React.useState("");
+
+  const handlePostSubmit = (e) => {
+    e.preventDefault();
+    if (newTodo === "") return;
+
+    const new_tache = {
+      id: crypto.randomUUID(),
+      tache: newTodo,
+    };
+
+    setTodos((prev) => [...prev, new_tache]);
+    setNewTodo("");
+  };
+
+  const deleteTodo = (todoId) => {
+    setTodos((prev) => prev.filter(({ id }) => id !== todoId));
+  };
+
+  return (
+    <div>
+      <h2>Todo List</h2>
+      <form onSubmit={handlePostSubmit}>
+        <input
+          type="text"
+          name="tache"
+          placeholder="Ajouter une tâche"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+        />
+        <button type="submit">Add</button>
+      </form>
+
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            {todo.tache}
+            <button onClick={() => deleteTodo(todo.id)}>X</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+  function App() {
+    return (
+      <div>
+        <TodoList />
+      </div>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<App />);
+</script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercice 8</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- React et ReactDOM via CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+ function LoginForm() {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  const handlePostSubmit = (e) => {
+    event.preventDefault();
+    console.log(email, password)
+    setEmail("")
+    setPassword("")
+  }
+  return (
+    <div>
+      <h2>Connectez-vous</h2>
+      <form onSubmit={handlePostSubmit}>
+        <label>Email :</label>
+        <input
+          type="email"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <label>Password :</label>
+        <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button
+        type="submit"
+        >
+        Valider
+        </button>
+        </form>
+    </div>
+  );
+}
+
+  function App() {
+    return (
+      <div>
+        <LoginForm />
+      </div>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<App />);
+</script>
+  </body>
+</html>

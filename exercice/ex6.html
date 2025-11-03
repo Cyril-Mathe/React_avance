@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercice 6</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- React et ReactDOM via CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+  function ProductCard({inStock, price}) {
+    if(inStock && price > 20) {
+        return(
+    <div>
+        <img src="./dmc.png" alt="Devil May Cry" with="400" height="300" />
+        <h3>Name : Devil May Cry</h3>
+        <p>Price : {price}€</p>
+    </div>
+)
+  }
+  if(inStock && price < 20) {
+        return(
+    <div>
+        <img src="./dmc.png" alt="Devil May Cry" with="400" height="300" />
+        <h3>Name : Devil May Cry</h3>
+        <p>Price : {price}€</p>
+        <p style={{backgroundColor: 'red', width: 65}}>On Sale !</p>
+    </div>
+)
+  }
+  else{
+    return(
+    <div>
+        <img src="./dmc.png" alt="Devil May Cry" with="400" height="300" />
+        <h3>Name : Devil May Cry</h3>
+        <p style={{color: 'red'}}>Out of stock</p>
+    </div>
+)}
+}
+
+  function App() {
+    return (
+      <div>
+        <ProductCard inStock={true} price={250}/>
+        <ProductCard inStock={false} />
+        <ProductCard inStock={true} price={18} />
+      </div>
+    );
+  }
+
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<App />);
+</script>
+  </body>
+</html>
