@@ -86,28 +86,28 @@ Voici un code que vous devez **analyser et expliquer**, en vous appuyant sur le 
 1. **Expliquez le fonctionnement du code** :
 
    * Quel est le rôle de `useState` dans `Counter` et `App` ?
-   Il défini une valeur interactive qui est "0" de base pour Counter et "true" pour App.
+   <br/>Il défini une valeur interactive qui est "0" de base pour Counter et "true" pour App.
 
    * À quoi sert `useEffect` ici ?
-   Il affiche un message dans la console à chaque fois qu'il y a un changement d'état, ici "MONTAGE / MISE À JOUR :" avec le nombre du compteur puis "NETTOYAGE :" avec le nombre du compteur.
+   <br/>Il affiche un message dans la console à chaque fois qu'il y a un changement d'état, ici "MONTAGE / MISE À JOUR :" avec le nombre du compteur puis "NETTOYAGE :" avec le nombre du compteur.
 
    * Quand la fonction de nettoyage est-elle appelée ?
-   Elle est appelée au démontage.
+   <br/>Elle est appelée au démontage.
 
    * Que se passe-t-il quand on clique sur "Changer le statut" ?
-   Le bouton pour ajouter +1 au compteur et le texte "Compteur :" affichant le nombre actuel sont cachés, le useEffect s'active ce qui affiche ses messages dans la console et le compteur est remis a zéro.
+   <br/>Le bouton pour ajouter +1 au compteur et le texte "Compteur :" affichant le nombre actuel sont cachés, le useEffect s'active ce qui affiche ses messages dans la console et le compteur est remis a zéro.
 
    * Quelle est la différence entre le **montage**, la **mise à jour**, et le **démontage** du composant `Counter` ?
-   Le démontage remets le compteur a zéro, la mise a jour ajoute +1 au compteur et le montage fixe le compteur a zéro.
+   <br/>Le démontage remets le compteur a zéro, la mise a jour ajoute +1 au compteur et le montage fixe le compteur a zéro.
 
 
 2. Appuyez-vous sur les concepts vus en cours :
 
    * Le cycle de vie d'un composant fonctionnel.
-   Il se constitue en 3 étapes : montage, mise à jour et démontage.
+   <br/>Il se constitue en 3 étapes : montage, mise à jour et démontage.
 
    * Le comportement de `useEffect` à chaque rendu.
-   Execute le code contenu dans le useEffect en 2 temps à chaque rendu.
+   <br/>Execute le code contenu dans le useEffect en 2 temps à chaque rendu.
 
 ---
 
@@ -139,8 +139,9 @@ export default function CounterReducer() {
 }
 ```
 
-Code :
+### Code :
 
+```
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -205,3 +206,4 @@ function Counter() {
   </script>
 </body>
 </html>
+```
