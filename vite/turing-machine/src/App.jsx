@@ -1,8 +1,10 @@
 import Cell from "./components/Cell";
 import { useMachineStore } from "./stores/useMachineStore";
+import { useNumberStore } from "./stores/useNumberStore";
 
 function App() {
   const { tape, step, reset, mode, halted, head } = useMachineStore((s) => s);
+  const { toggleNumber } = useNumberStore((s) => s)
 
   const base =
     "inline-flex items-center justify-center rounded-md font-medium transition focus:outline-none disabled:opacity-60 disabled:pointer-events-none";
@@ -62,6 +64,12 @@ function App() {
                     disabled={mode == "MOVE"}
                   >
                     Reset
+                  </button>
+                  <button
+                  className={`${base} ${sizes.md} ${variants.primary}`}
+                  onClick={toggleNumber}
+                  >
+                    1 ou 2
                   </button>
                 </div>
               </div>
