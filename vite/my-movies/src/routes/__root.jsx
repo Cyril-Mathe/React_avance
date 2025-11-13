@@ -13,9 +13,7 @@ const RootLayout = () => (
       <Link to="/favorites" className="[&.active]:font-bold">
         Favorites
       </Link>
-      <Link to="/movies/$id" className="[&.active]:font-bold">
-        Movies avec id
-      </Link>
+
     </div>
     <hr />
     <Outlet />
